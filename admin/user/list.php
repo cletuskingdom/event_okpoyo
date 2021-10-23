@@ -41,7 +41,7 @@
 						<td class="text-center"><img class="direct-chat-img border" src="<?php echo validate_image($row['avatar']) ?>" alt="Image" style="float:unset;"></td>
 						<td><b><?php echo ucwords($row['name']) ?></b></td>
 						<td><b><?php echo $row['username'] ?></b></td>
-						<td><b><?php echo ($row['type'] == 1) ? "Admin" : "Registrar" ?></b></td>
+						<td><b><?php echo ($row['type'] == 1) ? "Admin" : "User" ?></b></td>
 						<td class="text-center">
 		                    <div class="btn-group">
 		                        <a href="javascript:void(0)" data-id='<?php echo $row['id'] ?>' class="btn btn-primary btn-flat manage_user">

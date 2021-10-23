@@ -136,7 +136,7 @@ CREATE TABLE `users` (
   `password` text NOT NULL,
   `avatar` text DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT 2 COMMENT '1=Admin,2=Registrar',
+  `type` tinyint(1) NOT NULL DEFAULT 2 COMMENT '1=Admin,2=User',
   `date_added` datetime NOT NULL DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

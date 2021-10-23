@@ -54,7 +54,7 @@ $(document).ready(function() {
                 }
             })
         })
-        //Registrar Login
+        //user Login
     $('#r-login').submit(function(e) {
         e.preventDefault()
         start_loader()
@@ -72,7 +72,7 @@ $(document).ready(function() {
                 if (resp) {
                     resp = JSON.parse(resp)
                     if (resp.status == 'success') {
-                        location.replace(_base_url_ + 'registrar');
+                        location.replace(_base_url_ + 'user');
                     } else if (resp.status == 'incorrect') {
                         var _frm = $('#msg')
                         var _msg = "<div class='alert alert-danger text-white err_msg'><i class='fa fa-exclamation-triangle'></i> Incorrect username or password</div>"

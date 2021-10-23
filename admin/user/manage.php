@@ -32,7 +32,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
             <div class="form-group">
                 <label for="type" class="control-label">User Type</label>
                 <select name="type" id="type" class="custom-select custom-select-sm">
-                    <option value="2" <?php echo (isset($type) && $type == 1) ? "selected" : '' ?>>Registrar</option>
+                    <option value="2" <?php echo (isset($type) && $type == 1) ? "selected" : '' ?>>User</option>
                     <option value="1" <?php echo (isset($type) && $type == 1) ? "selected" : '' ?>>Administrator</option>
                 </select>
             </div>

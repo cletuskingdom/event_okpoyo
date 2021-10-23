@@ -11,7 +11,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="<?php echo base_url ?>/registrar" class="nav-link">Home</a>
+            <a href="<?php echo base_url ?>/user" class="nav-link">Home</a>
           </li>
         </ul>
       </div>
