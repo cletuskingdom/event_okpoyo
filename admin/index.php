@@ -39,9 +39,9 @@
 						include '404.html';
 					}else{
 						if(is_dir($page))
-						include $page.'/index.php';
+							include $page.'/index.php';
 						else
-						include $page.'.php';
+							include $page.'.php';
 					}
 				?>
 			</div>
