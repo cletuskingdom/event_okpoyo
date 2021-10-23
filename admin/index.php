@@ -32,20 +32,19 @@
         </div>
         <!-- /.content-header -->
         <!-- Main content -->
-        <section class="content">
-          <div class="container-fluid">
-            <?php 
-              if(!file_exists($page.".php") && !is_dir($page)){
-                  include '404.html';
-              }else{
-                if(is_dir($page))
-                  include $page.'/index.php';
-                else
-                  include $page.'.php';
-
-              }
-            ?>
-          </div>
+		<section class="content">
+			<div class="container-fluid">
+				<?php 
+					if(!file_exists($page.".php") && !is_dir($page)){
+						include '404.html';
+					}else{
+						if(is_dir($page))
+						include $page.'/index.php';
+						else
+						include $page.'.php';
+					}
+				?>
+			</div>
         </section>
         <!-- /.content -->
         <div class="modal fade" id="confirm_modal" role='dialog'>
