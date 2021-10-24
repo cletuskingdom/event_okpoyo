@@ -14,19 +14,19 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 	<input type="hidden" name='id' value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
 	<div class="form-group">
 		<label for="name" class="control-label">Fullname</label>
-		<input type="text" class="form-control form-control-sm" name="name" id="name" value="<?php echo isset($name) ? $name : '' ?>" required>
+		<input type="text" class="form-control form-control-sm" name="name" id="name" value="<?=$_SESSION['userdata']['username']?>" readonly>
 	</div>
 	<div class="form-group">
 		<label for="email" class="control-label">Email</label>
-		<input type="email" class="form-control form-control-sm" name="email" id="email" value="<?php echo isset($email) ? $email : '' ?>" required>
+		<input type="email" class="form-control form-control-sm" name="email" id="email" value="" required>
 	</div>
 	<div class="form-group">
 		<label for="contact" class="control-label">Contact</label>
-		<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="<?php echo isset($contact) ? $contact : '' ?>" required>
+		<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="" required>
 	</div>
 	<div class="form-group">
 		<label for="remarks" class="control-label">Remarks</label>
-		<textarea type="text" class="form-control form-control-sm" name="remarks" id="remarks" required ><?php echo isset($remarks) ? $remarks : '' ?></textarea>
+		<textarea type="text" class="form-control form-control-sm" name="remarks" id="remarks" required ></textarea>
 	</div>
 	<div class="form-group">
 		<label for="event_id" class="control-label">Event</label>
