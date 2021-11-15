@@ -65,8 +65,9 @@
 										$i = 1;
 										
 										// $qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id order by a.name asc where username = 'admin' ");
-										// $qry = $conn->query("SELECT * FROM event_audience WHERE name = 'admin'");
-										$qry = $conn->query("SELECT a.*, e.title FROM event_audience a inner join event_list e on a.name = 'admin' order by a.name asc");
+
+										// $qry = $conn->query("SELECT a.*, e.title FROM event_audience a inner join event_list e on a.name = 'admin' order by a.name asc");
+										$qry = $conn->query("SELECT  * from event_audience INNER JOIN event_list on event_audience.event_id=event_list.id and event_audience.name='admin'");
 										while($row = $qry->fetch_assoc()):
 									?>
 									
