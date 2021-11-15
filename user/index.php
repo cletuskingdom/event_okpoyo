@@ -66,7 +66,7 @@
 										
 										// $qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id order by a.name asc where username = 'admin' ");
 										// $qry = $conn->query("SELECT * FROM event_audience WHERE name = 'admin'");
-										$qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id order by a.name asc  ");
+										$qry = $conn->query("SELECT a.*, e.title FROM event_audience a inner join event_list e on a.name = 'admin' order by a.name asc");
 										while($row = $qry->fetch_assoc()):
 									?>
 									
@@ -82,12 +82,13 @@
 										<td class="text-center">
 											<div class="btn-group">
 												<a href="javascript:void(0)" data-id='<?php echo $row['id'] ?>' class="btn btn-primary btn-flat manage_audience">
-												<i class="fas fa-edit"></i>
+													<i class="fas fa-edit"></i>
 												</a>
+
 												<button type="button" class="btn btn-danger btn-flat delete_audience" data-id="<?php echo $row['id'] ?>">
-												<i class="fas fa-trash"></i>
+													<i class="fas fa-trash"></i>
 												</button>
-										</div>
+											</div>
 										</td>
 									</tr>
 										
