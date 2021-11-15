@@ -66,7 +66,6 @@ $(document).ready(function() {
             data: $(this).serialize(),
             error: err => {
                 console.log(err)
-
             },
             success: function(resp) {
                 if (resp) {

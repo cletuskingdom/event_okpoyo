@@ -3,7 +3,7 @@ class DBConnection{
 
     private $host = 'localhost';
     private $username = 'root';
-    private $password = '';
+    private $password = 'ubuntu';
     private $database = 'event';
     
     public $conn;

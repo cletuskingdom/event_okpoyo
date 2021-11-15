@@ -24,12 +24,11 @@ class Login extends DBConnection {
 				if(!is_numeric($k) && $k != 'password'){
 					$this->settings->set_userdata($k,$v);
 				}
-
 			}
 			$this->settings->set_userdata('login_type',1);
-		return json_encode(array('status'=>'success'));
+			return json_encode(array('status'=>'success'));
 		}else{
-		return json_encode(array('status'=>'incorrect','last_qry'=>"SELECT * from users where username = '$username' and password = md5('$password') "));
+			return json_encode(array('status'=>'incorrect','last_qry'=>"SELECT * from users where username = '$username' and password = md5('$password') "));
 		}
 	}
 	public function elogin(){
@@ -58,12 +57,11 @@ class Login extends DBConnection {
 				if(!is_numeric($k)){
 					$this->settings->set_userdata($k,$v);
 				}
-
 			}
 			$this->settings->set_userdata('login_type',2);
 			return json_encode(array('status'=>'success'));
 		}else{
-		return json_encode(array('status'=>'incorrect'));
+			return json_encode(array('status'=>'incorrect'));
 		}
 	}
 	public function logout(){

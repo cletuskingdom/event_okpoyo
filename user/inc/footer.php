@@ -1,6 +1,6 @@
 <script>
-  $(document).ready(function(){
-     window.viewer_modal = function($src = ''){
+  	$(document).ready(function(){
+     	window.viewer_modal = function($src = ''){
       start_loader()
       var t = $src.split('.')
       t = t[1]
@@ -19,7 +19,7 @@
             })
             end_loader()  
 
-  }
+  	}
     window.uni_modal = function($title = '' , $url='',$size=""){
         start_loader()
         $.ajax({

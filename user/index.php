@@ -13,16 +13,14 @@
 		<div class="wrapper">
 			<?php require_once('inc/topBarNav.php') ?>
 				
-			<a class="btn my-4 text-right btn-sm btn-default btn-flat border-primary new_audience" 
-				href="javascript:void(0)"><i class="fa fa-plus"></i> Register for an event</a>
-
+			<!-- <a class="btn my-4 text-right btn-sm btn-default btn-flat border-primary new_audience" 
+				href="#!"><i class="fa fa-plus"></i> Register for an event</a> -->
 			<?php 
 				// $page = isset($_GET['page']) ? $_GET['page'] : 'home';  
 			?>
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper" style="min-height: 567.854px;">
-			
 				<!-- Main content -->
 				<div class="container main-container h-100">
 					<?php 
@@ -37,11 +35,15 @@
 					?>
 				</div>
 
-				<div class="col-lg-12">
+				<div class="col-md-10 offset-md-1 pt-5">
 					<div class="card card-outline card-primary">
 						<div class="card-header">
 							<div class="card-tools">
 								<!-- <a class="btn btn-block btn-sm btn-default btn-flat border-primary new_audience" href="javascript:void(0)"><i class="fa fa-plus"></i> Add New</a> -->
+								<button class="btn my-4 text-right btn-sm btn-default btn-flat border-primary new_audience"
+									onclick="new_audience()">
+									Register for an event
+								</button>
 							</div>
 						</div>
 						
@@ -62,8 +64,10 @@
 									<?php
 										$i = 1;
 										
+										// $qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id order by a.name asc where username = 'admin' ");
+										// $qry = $conn->query("SELECT * FROM event_audience WHERE name = 'admin'");
 										$qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id order by a.name asc  ");
-										while($row= $qry->fetch_assoc()):
+										while($row = $qry->fetch_assoc()):
 									?>
 									
 									<tr>
@@ -158,13 +162,14 @@
 		</div>
 
 		<!-- /.content-wrapper -->
-		<?php require_once('inc/footer.php') ?>
+		<?php require_once('./inc/footer.php') ?>
 
 		<script>
 			$(document).ready(function(){
 				$('.new_audience').click(function(){
-					uni_modal("New Audience","../admin/audience/manage.php")
-				})
+					
+					uni_modal("New Audience","./../admin/audience/manage.php");
+				});
 			});
 		</script>
   	</body>
