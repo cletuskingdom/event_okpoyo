@@ -54,8 +54,8 @@
   <!-- /.lockscreen-item -->
   <div id="msg"></div>
   <div class="help-block text-center">
-      <a href="<?php echo base_url.'admin' ?>">Login as Admin</a>
-
+      <a href="<?php echo base_url.'admin' ?>">Login as Admin</a> |
+      <a href="<?php echo base_url.'register.php' ?>">Register</a>
   </div>
 </div>
 <!-- /.center -->
