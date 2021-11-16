@@ -40,7 +40,16 @@
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>
 						<td><b><?php echo ucwords($row['title']) ?></b></td>
-						<td><b><?php echo ucwords($row['name']) ?></b> <span><a href="javascript:void(0)" class="view_data" data-id="<?php echo $row['id'] ?>"><span class="fa fa-qrcode"></span></a></span></td>
+						<td>
+							<b>
+								<?php echo ucwords($row['name']) ?>
+							</b> 
+							<span>
+								<a href="javascript:void(0)" class="view_data" data-id="<?php echo $row['id'] ?>">
+									<span class="fa fa-qrcode"></span>
+								</a>
+							</span>
+						</td>
 						<td>
 							<small><b>Email:</b> <?php echo $row['email'] ?></small><br>
 							<small><b>Contact #:</b> <?php echo $row['contact'] ?></small>
@@ -77,7 +86,7 @@
 		})
 		
 		$('.delete_audience').click(function(){
-		_conf("Are you sure to delete this audience?","delete_audience",[$(this).attr('data-id')])
+			_conf("Are you sure to delete this audience?","delete_audience",[$(this).attr('data-id')])
 		})
 		$('#list').dataTable()
 	})

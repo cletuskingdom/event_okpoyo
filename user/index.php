@@ -1,9 +1,4 @@
 <?php require_once('../config.php'); ?>
-<?php if($_settings->chk_flashdata('success')): ?>
-<script>
-	alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
-</script>
-<?php endif;?>
 
 <!DOCTYPE html>
 <html lang="en" class="" style="height: auto;">
@@ -12,9 +7,6 @@
   	<body class="hold-transition layout-top-nav" >
 		<div class="wrapper">
 			<?php require_once('inc/topBarNav.php') ?>
-				
-			<!-- <a class="btn my-4 text-right btn-sm btn-default btn-flat border-primary new_audience" 
-				href="#!"><i class="fa fa-plus"></i> Register for an event</a> -->
 			<?php 
 				// $page = isset($_GET['page']) ? $_GET['page'] : 'home';  
 			?>
@@ -63,11 +55,7 @@
 								<tbody>
 									<?php
 										$i = 1;
-										
-										// $qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id order by a.name asc where username = 'admin' ");
-
-										// $qry = $conn->query("SELECT a.*, e.title FROM event_audience a inner join event_list e on a.name = 'admin' order by a.name asc");
-										$qry = $conn->query("SELECT  * from event_audience INNER JOIN event_list on event_audience.event_id=event_list.id and event_audience.name='admin'");
+										$qry = $conn->query("SELECT * from event_audience INNER JOIN event_list on event_audience.event_id=event_list.id and event_audience.name='admin'");
 										while($row = $qry->fetch_assoc()):
 									?>
 									
@@ -92,7 +80,6 @@
 											</div>
 										</td>
 									</tr>
-										
 									<?php endwhile; ?>
 								</tbody>
 							</table>
@@ -169,10 +156,44 @@
 		<script>
 			$(document).ready(function(){
 				$('.new_audience').click(function(){
-					
 					uni_modal("New Audience","./../admin/audience/manage.php");
 				});
+
+				$('.view_data').click(function(){
+					uni_modal("QR", "./../admin/audience/view.php?id="+$(this).attr('data-id'));
+				});
+
+				$('.delete_audience').click(function(){
+					_conf("Are you sure to delete this audience?","delete_audience",[$(this).attr('data-id')])
+				})
+				$('#list').dataTable();
 			});
+			function delete_audience($id){
+				start_loader()
+				$.ajax({
+					url:_base_url_+'classes/Master.php?f=delete_audience',
+					method:'POST',
+					data:{id:$id},
+					dataType:"json",
+					error:err=>{
+						alert_toast("An error occured");
+						end_loader()
+					},
+					success:function(resp){
+						if(resp.status=="success"){
+							location.reload()
+						}else{
+							alert_toast("Deleting Data Failed");
+						}
+						end_loader()
+					}
+				})
+			}
 		</script>
+		<?php if($_settings->chk_flashdata('success')): ?>
+			<script>
+				alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
+			</script>
+		<?php endif;?>
   	</body>
 </html>

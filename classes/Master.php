@@ -86,8 +86,8 @@ Class Master extends DBConnection {
 			if(!is_dir('../temp/')) mkdir('../temp/');
 			$tempDir = '../temp/'; 
 			if(!is_file('../temp/'.$code.'.png'))
-			QRcode::png($data, $tempDir.''. md5($code) .'.png', QR_ECLEVEL_L, 5);
-			// QRcode::png($code, $tempDir.''.$event_id['data-id'].'.png', QR_ECLEVEL_L, 5);
+			QRcode::png($code, $tempDir.''. $code .'.png', QR_ECLEVEL_L, 5);
+			// QRcode::png($code, $tempDir . '' . $event_id['data-id'] . '.png', QR_ECLEVEL_L, 5);
 			$this->settings->set_flashdata("success", " Event Guest Successfully Saved.");
 		}else{
 			$resp['status'] = 'failed';
