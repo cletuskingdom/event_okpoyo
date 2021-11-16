@@ -36,7 +36,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 				$qry = $conn->query("SELECT id,title FROM event_list order by concat(title) asc ");
 				while($row = $qry->fetch_assoc()):
 			?>
-				<option data-id = "<?=$row['title']?>" value="<?php echo $row['id'] ?>" <?php echo isset($event_id) && $event_id == $row['id'] ? "selected" : '' ?>><?php echo ucwords($row['title']) ?></option>
+				<option value="<?php echo $row['id'] ?>" <?php echo isset($event_id) && $event_id == $row['id'] ? "selected" : '' ?>><?php echo ucwords($row['title']) ?></option>
 			<?php endwhile; ?>
 		</select>
 	</div>

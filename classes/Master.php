@@ -79,15 +79,14 @@ Class Master extends DBConnection {
 		}
 		$save = $this->conn->query($sql);
 		if($save){
-
+			// // QRcode::png($code, $tempDir . '' . $event_id['data-id'] . '.png', QR_ECLEVEL_L, 5);
+			// ====================== new ==========================
 			$resp['status'] = 'success';
-			// $code = empty($name) ? $this->conn->insert_id : $name;
-			$code = $event_id  . ' - ' . $name . ' - ' . $email;
+			$code = empty($id) ? md5($this->conn->insert_id) : md5($id);
 			if(!is_dir('../temp/')) mkdir('../temp/');
 			$tempDir = '../temp/'; 
 			if(!is_file('../temp/'.$code.'.png'))
-			QRcode::png($code, $tempDir.''. $code .'.png', QR_ECLEVEL_L, 5);
-			// QRcode::png($code, $tempDir . '' . $event_id['data-id'] . '.png', QR_ECLEVEL_L, 5);
+			QRcode::png($code, $tempDir.''.$code.'.png', QR_ECLEVEL_L, 5);
 			$this->settings->set_flashdata("success", " Event Guest Successfully Saved.");
 		}else{
 			$resp['status'] = 'failed';

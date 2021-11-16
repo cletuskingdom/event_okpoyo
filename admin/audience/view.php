@@ -1,13 +1,13 @@
 <?php
-require_once('../../config.php');
-if(isset($_GET['id']) && !empty($_GET['id'])){
-	$qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id where a.id = '{$_GET['id']}'");
-	foreach($qry->fetch_array() as $k => $v){
-		if(!is_numeric($k)){
-			$$k = $v;
+	require_once('../../config.php');
+	if(isset($_GET['id']) && !empty($_GET['id'])){
+		$qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id where a.id = '{$_GET['id']}'");
+		foreach($qry->fetch_array() as $k => $v){
+			if(!is_numeric($k)){
+				$$k = $v;
+			}
 		}
 	}
-}
 ?>
 <div class="row">
 	<div class="col-md-12 mb-2 justifu-content-end">
@@ -19,7 +19,8 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 		<h3>Event QR Code - keep it safe</h3>
 		<div class="form-group d-flex justify-content-center">
 			<!-- <img src="<?php echo validate_image('temp/'.md5($event_id['data-id'] . ' - ' . $name .' - '. $email).'.png') ?>" alt="" id="cimg" class="img-fluid img-thumbnail"> -->
-			<?=md5($event_id['data-id'] . ' - ' . $name .' - '. $email)?>
+			<!-- <img src="<?php echo validate_image('temp/'.md5($id).'.png') ?>" alt="" id="cimg" class="img-fluid img-thumbnail"> -->
+			<?=md5($id)?>
 		</div>
 	</div>
 	<!-- <hr class="border-primary">

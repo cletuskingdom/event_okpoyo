@@ -55,10 +55,10 @@
 								<tbody>
 									<?php
 										$i = 1;
-										$qry = $conn->query("SELECT * from event_audience INNER JOIN event_list on event_audience.event_id=event_list.id and event_audience.name='admin'");
+										$username = $_SESSION['userdata']['username'];
+										$qry = $conn->query("SELECT * from event_audience INNER JOIN event_list on event_audience.event_id=event_list.id and event_audience.name='$username'");
 										while($row = $qry->fetch_assoc()):
 									?>
-									
 									<tr>
 										<th class="text-center"><?php echo $i++ ?></th>
 										<td><b><?php echo ucwords($row['title']) ?></b></td>
@@ -152,7 +152,6 @@
 
 		<!-- /.content-wrapper -->
 		<?php require_once('./inc/footer.php') ?>
-
 		<script>
 			$(document).ready(function(){
 				$('.new_audience').click(function(){
