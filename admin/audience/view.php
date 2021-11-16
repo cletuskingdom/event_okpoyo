@@ -1,7 +1,10 @@
 <?php
 	require_once('../../config.php');
 	if(isset($_GET['id']) && !empty($_GET['id'])){
-		$qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id where a.id = '{$_GET['id']}'");
+		// $qry = $conn->query("SELECT a.*,e.title FROM event_audience a inner join event_list e on e.id = a.event_id where a.id = '{$_GET['id']}'");
+		$username = $_SESSION['userdata']['username'];
+		$qry = $conn->query("SELECT * from event_audience INNER JOIN event_list on event_audience.event_id=event_list.id and event_audience.name='$username'");
+		
 		foreach($qry->fetch_array() as $k => $v){
 			if(!is_numeric($k)){
 				$$k = $v;
@@ -18,8 +21,7 @@
 	<div class="form-group">
 		<h3>Event QR Code - keep it safe</h3>
 		<div class="form-group d-flex justify-content-center">
-			<!-- <img src="<?php echo validate_image('temp/'.md5($event_id['data-id'] . ' - ' . $name .' - '. $email).'.png') ?>" alt="" id="cimg" class="img-fluid img-thumbnail"> -->
-			<?=$id?>
+			<img src="<?php echo validate_image('temp/'.md5($event_id . ' - ' . $name .' - '. $email).'.png') ?>" alt="" id="cimg" class="img-fluid img-thumbnail">
 		</div>
 	</div>
 	<!-- <hr class="border-primary">
