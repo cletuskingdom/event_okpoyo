@@ -19,8 +19,7 @@
 		<h3>Event QR Code - keep it safe</h3>
 		<div class="form-group d-flex justify-content-center">
 			<!-- <img src="<?php echo validate_image('temp/'.md5($event_id['data-id'] . ' - ' . $name .' - '. $email).'.png') ?>" alt="" id="cimg" class="img-fluid img-thumbnail"> -->
-			<!-- <img src="<?php echo validate_image('temp/'.md5($id).'.png') ?>" alt="" id="cimg" class="img-fluid img-thumbnail"> -->
-			<?=md5($id)?>
+			<?=$id?>
 		</div>
 	</div>
 	<!-- <hr class="border-primary">

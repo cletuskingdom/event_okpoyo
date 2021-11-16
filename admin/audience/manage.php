@@ -18,15 +18,15 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 	</div>
 	<div class="form-group">
 		<label for="email" class="control-label">Email</label>
-		<input type="email" class="form-control form-control-sm" name="email" id="email" value="" required>
+		<input type="email" class="form-control form-control-sm" name="email" id="email" value="<?php echo isset($email) ? $email : '' ?>" required>
 	</div>
 	<div class="form-group">
 		<label for="contact" class="control-label">Contact</label>
-		<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="" required>
+		<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="<?php echo isset($contact) ? $contact : '' ?>" required>
 	</div>
 	<div class="form-group">
 		<label for="remarks" class="control-label">Remarks</label>
-		<textarea type="text" class="form-control form-control-sm" name="remarks" id="remarks" required ></textarea>
+		<textarea type="text" class="form-control form-control-sm" name="remarks" id="remarks" required ><?php echo isset($remarks) ? $remarks : '' ?></textarea>
 	</div>
 	<div class="form-group">
 		<label for="event_id" class="control-label">Event</label>
@@ -36,7 +36,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 				$qry = $conn->query("SELECT id,title FROM event_list order by concat(title) asc ");
 				while($row = $qry->fetch_assoc()):
 			?>
-				<option value="<?php echo $row['id'] ?>" <?php echo isset($event_id) && $event_id == $row['id'] ? "selected" : '' ?>><?php echo ucwords($row['title']) ?></option>
+				<option data-id = "<?=$row['title']?>" value="<?php echo $row['id'] ?>" <?php echo isset($event_id) && $event_id == $row['id'] ? "selected" : '' ?>><?php echo ucwords($row['title']) ?></option>
 			<?php endwhile; ?>
 		</select>
 	</div>
