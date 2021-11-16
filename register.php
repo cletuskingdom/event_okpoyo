@@ -30,20 +30,19 @@
 				data: $(this).serialize(),
 			})
 			.done(function(response) {
-				// console.log(resp)
 				alert(response.message);
 
-				if(response.input == "name" && response.status == 0){
-					$("#registerResponse").addClass('alert alert-danger');
-					$("#registerResponse").html(response.message);
-				}else if ( response.status == 1) {
-					$("#registerResponse").removeClass('alert alert-danger');
-					$("#registerResponse").addClass('alert alert-success');
-					$("#registerResponse").html(response.message);
-				}else{
-					$("#registerResponse").addClass('alert alert-danger');
-					$("#registerResponse").html("Please Check What You Are Doing Or Contact Site Admin");
-				}
+				// if(response.input == "name" && response.status == 0){
+				// 	$("#registerResponse").addClass('alert alert-danger');
+				// 	$("#registerResponse").html(response.message);
+				// }else if ( response.status == 1) {
+				// 	$("#registerResponse").removeClass('alert alert-danger');
+				// 	$("#registerResponse").addClass('alert alert-success');
+				// 	$("#registerResponse").html(response.message);
+				// }else{
+				// 	$("#registerResponse").addClass('alert alert-danger');
+				// 	$("#registerResponse").html("Please Check What You Are Doing Or Contact Site Admin");
+				// }
 			}).fail(function(error) {
 				console.log(error)
 			});

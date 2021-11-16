@@ -1,7 +1,9 @@
 <?php
-    require_once('./../../config.php');
     // session_start();
+    require_once('./../../config.php');
+    require_once("processrequest.php");
     $requestingPage = stripslashes($_GET['_mode']);
+    $processRequest = new processRequest;
     
     switch ($requestingPage) {
         case "user-register":
@@ -13,19 +15,17 @@
                 $type = $processRequest->test_input($_POST['type']);
 
                 $response = ['status' => 0, 'message' => "* Phone is required"];
+                
+                // Validation start
+                if (empty($fname)) {
+                    $response = ['status' => 0, 'message' => '* First name is required'];
+                }elseif (empty($lname)) {
+                    $response = ['status' => 0, 'message' => '* Last name is required'];
+                }elseif (empty($username)) {
+                    $response = ['status' => 0, 'message' => '* Username is required'];
+                }else{
 
-                // $access = $_POST['access'];
-                // $gender =$_POST['gender'];	
-
-                // if (empty($name) or (!preg_match("/^[a-zA-Z ]*$/",$name))) {
-                //     $response = array('status'=>0,'input'=>"name",'message'=>"*Fullname is required and must contain only alphabets");
-                // }elseif (empty($email)) {
-                //     $response = array('status'=>0,'input'=>"name",'message'=>"*Email is required");
-                // }elseif (empty($phone)) {
-                //     $response = array('status'=>0,'input'=>"name",'message'=>"*Phone is required");
-                // }else{
-
-                // }
+                }
             }
             
         break;
