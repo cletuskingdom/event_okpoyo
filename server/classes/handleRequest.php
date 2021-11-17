@@ -11,8 +11,10 @@
                 $firstname = $processRequest->test_input($_POST['fname']);
                 $lastname = $processRequest->test_input($_POST['lname']); 
                 $username = $processRequest->test_input($_POST['username']);
-                $passw = $processRequest->test_input($_POST['password']);
+                $passw = $processRequest->test_input($_POST['pass']);
+                $password = md5($passw);
                 $atype = $processRequest->test_input($_POST['type']);
+                $avatar = "nothing";
                 
                 // Validation start
                 if (empty($firstname)) {
@@ -27,6 +29,7 @@
                     $DBpassword = "ubuntu";
                     $dbname = "event";
 
+                    // insert registration data to db
                     try {
                         $conn = new PDO("mysql:host=$servername; dbname=$dbname", $DBusername, $DBpassword);
 
@@ -34,10 +37,10 @@
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                         $sql = "INSERT INTO users (firstname, lastname, username, password, avatar, type)
-                        VALUES ('$firstname', '$lastname', '$username', '$passw', '$avatar',' $atype')";
-
+                        VALUES ('$firstname', '$lastname', '$username', '$password', '$avatar',' $atype')";
                         // use exec() because no results are returned
                         $conn->exec($sql);
+                        
                         $response = ['status' => 1, 'message' => 'User account created.'];
                     } catch(PDOException $e) {
                         $response = ['status' => 0, 'message' => $e->getMessage()];
