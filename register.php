@@ -1,4 +1,3 @@
-<?php require_once('./config.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +11,8 @@
 		<input type="text" name="fname" placeholder="enter first name">
 		<input type="text" name="lname" placeholder="enter last name">
 		<input type="text" name="username" placeholder="enter username">
-		<input type="password" name="pass" placeholder="enter password">
-		<input type="password" name="cpass" placeholder="confirm password">
+		<input type="password" name="pass" placeholder="enter password" class="password">
+		<input type="password" name="cpass" placeholder="confirm password" class="cpassword" readonly>
 		<input type="hidden" name="type" value="2">
 		<div id="registerResponse"></div>
 		<button type="submit">create account</button>
@@ -24,7 +23,7 @@
 		$("#registerForm").submit(function(event) {
 			event.preventDefault();
 			$.ajax({
-				url: 'server/classes/handleRequest.php?_mode=user-register',
+				url: './server/classes/handleRequest.php?_mode=user-register',
 				type: 'POST',
 				dataType: 'json',
 				data: $(this).serialize(),
@@ -46,6 +45,9 @@
 			}).fail(function(error) {
 				console.log(error)
 			});
+		});
+		$(".password").on('keyup', function(){
+			$('.cpassword').val($('.password').val());
 		});
 	</script>
 </body>
