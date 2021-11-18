@@ -8,12 +8,24 @@
 </head>
 <body>
 	<form id="registerForm">
-		<input type="text" name="fname" placeholder="enter first name">
-		<input type="text" name="lname" placeholder="enter last name">
-		<input type="text" name="username" placeholder="enter username">
-		<input type="password" name="pass" placeholder="enter password" class="password">
-		<input type="password" name="cpass" placeholder="confirm password" class="cpassword" readonly>
-		<input type="hidden" name="type" value="2">
+		<div style="margin-bottom: 30px;">
+			<input type="text" name="fname" placeholder="enter first name">
+		</div>	
+		<div style="margin-bottom: 30px;">
+			<input type="text" name="lname" placeholder="enter last name">
+		</div>	
+		<div style="margin-bottom: 30px;">
+			<input type="text" name="username" placeholder="enter username">
+		</div>	
+		<div style="margin-bottom: 30px;">
+			<input type="password" name="pass" placeholder="enter password" class="password">
+		</div>	
+		<div style="margin-bottom: 30px;">
+			<input type="password" name="cpass" placeholder="confirm password" class="cpassword" readonly>
+		</div>	
+		<div style="margin-bottom: 30px;">
+			<input type="hidden" name="type" value="2">
+		</div>	
 		<div id="registerResponse"></div>
 		<button type="submit">create account</button>
 	</form>
@@ -29,19 +41,11 @@
 				data: $(this).serialize(),
 			})
 			.done(function(response) {
-				alert(response.message);
-
-				// if(response.input == "name" && response.status == 0){
-				// 	$("#registerResponse").addClass('alert alert-danger');
-				// 	$("#registerResponse").html(response.message);
-				// }else if ( response.status == 1) {
-				// 	$("#registerResponse").removeClass('alert alert-danger');
-				// 	$("#registerResponse").addClass('alert alert-success');
-				// 	$("#registerResponse").html(response.message);
-				// }else{
-				// 	$("#registerResponse").addClass('alert alert-danger');
-				// 	$("#registerResponse").html("Please Check What You Are Doing Or Contact Site Admin");
-				// }
+				if(response.status = 0){
+					alert(response.message);
+				}else{
+					location.replace("/event/portal.php")
+				}
 			}).fail(function(error) {
 				console.log(error)
 			});
